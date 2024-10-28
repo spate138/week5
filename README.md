@@ -1,27 +1,26 @@
-# Web Development Project 5 - *Recipe Dashboard*
+# Web Development Project 6 - *Recipe Dashboard*
 
 Submitted by: **Sumit Patel**
 
-This web app: **displays different ways an item can be made**
+This web app: **different recipes of an item**
 
 Time spent: **2** hours spent in total
 
 ## Required Features
 
-The following **5** functionality is completed:
+The following **3** functionality is completed:
 
-- [ ] **The list displays a list of data fetched using an API call**
-- [ ] **Data uses the useEffect React hook and async/await syntax**
-- [ ] **The app dashboard includes at least three summary statistics about the data such as**
-  - [ ] *mean, max, min calories of the dishes displayed*
-- [ ] **A search bar allows the user to search for an item in the fetched data**
-- [ ] **Multiple different filters (2+) allow the user to filter items in the database by specified categories**
+- [ ] **The app includes at least one unique chart developed using the fetched data that tell an interesting story**
+- [ ] **Clicking on an item in the list view displays more details about it**
+  - [ ] To ensure an accurate grade, your sidebar **must** be viewable when showing the details view in your recording.
+- [ ] **Clicking on an item has a direct, unique link to that item's detail view page**
+  - [ ] To ensure an accurate grade, the URL/address bar of your web browser **must** be viewable in your recording.  
+
 
 The following **optional** features are implemented:
 
-- [ ] Multiple filters can be applied simultaneously
-- [ ] Filters use different input types such as a text input, a selection, or a slider
-- [ ] The user can enter specific bounds for filter values
+- [ ] The site's customized dashboard contains more content that explains what is interesting about the data
+- [ ] The site allows users to toggle between different data visualizations
 
 The following **additional** features are implemented:
 
@@ -30,9 +29,7 @@ The following **additional** features are implemented:
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
-<img src='screenCapture.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
-
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='screenCapture2.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 Video done through Mac Screen Capture then GIF created with ...
 https://cloudconvert.com/mov-to-gif
@@ -43,7 +40,7 @@ Describe any challenges encountered while building the app.
 
 ## License
 
-    Copyright [2024] [Sumit Patel]
+    Copyright [yyyy] [name of copyright owner]
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
