@@ -1,16 +1,20 @@
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 const Card = ({ recipe }) => {
   return (
     <div style={styles.card}>
-      <h3>{recipe.title}</h3>
-      <img src={recipe.image} alt={recipe.title} style={styles.image} />
+      <Link to={`/recipe/${recipe.id}`}>
+        <h3>{recipe.title}</h3>
+        <img src={recipe.image} alt={recipe.title} style={styles.image} />
+      </Link>
     </div>
   );
 };
 
 Card.propTypes = {
   recipe: PropTypes.shape({
+    id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired,
   }).isRequired,

@@ -1,8 +1,11 @@
 import { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import axios from 'axios';
 import Header from './components/Header';
 import List from './components/List';
 import NavBar from './components/Navbar';
+import CaloriesChart from './components/CaloriesChart';
+import RecipeDetail from './components/RecipeDetail';
 
 const App = () => {
   const [recipes, setRecipes] = useState([]);
@@ -72,67 +75,78 @@ const App = () => {
   const stats = calculateCaloriesStats(recipes);
 
   return (
-    <div>
+    <Router>
       <Header />
       <NavBar />
+      <Routes>
+        {/* Main route to show the list of recipes */}
+        <Route
+          path="/"
+          element={
+            <div style={styles.container}>
+              <div style={styles.searchFilter}>
+                <input
+                  type="text"
+                  placeholder="Search for recipes"
+                  value={query}
+                  onChange={handleSearchChange}
+                  style={styles.input}
+                />
+                <input
+                  type="text"
+                  name="intolerances"
+                  placeholder="Intolerances (e.g., gluten)"
+                  value={filters.intolerances}
+                  onChange={handleFilterChange}
+                  style={styles.input}
+                />
+                <input
+                  type="number"
+                  name="minServings"
+                  placeholder="Min Servings"
+                  value={filters.minServings}
+                  onChange={handleFilterChange}
+                  style={styles.input}
+                />
+                <input
+                  type="number"
+                  name="maxServings"
+                  placeholder="Max Servings"
+                  value={filters.maxServings}
+                  onChange={handleFilterChange}
+                  style={styles.input}
+                />
+                <button onClick={handleSearchClick} style={styles.button}>
+                  Search
+                </button>
+              </div>
 
-      <div style={styles.container}>
-        <div style={styles.searchFilter}>
-          <input
-            type="text"
-            placeholder="Search for recipes"
-            value={query}
-            onChange={handleSearchChange}
-            style={styles.input}
-          />
-          <input
-            type="text"
-            name="intolerances"
-            placeholder="Intolerances (e.g., gluten)"
-            value={filters.intolerances}
-            onChange={handleFilterChange}
-            style={styles.input}
-          />
-          <input
-            type="number"
-            name="minServings"
-            placeholder="Min Servings"
-            value={filters.minServings}
-            onChange={handleFilterChange}
-            style={styles.input}
-          />
-          <input
-            type="number"
-            name="maxServings"
-            placeholder="Max Servings"
-            value={filters.maxServings}
-            onChange={handleFilterChange}
-            style={styles.input}
-          />
-          <button onClick={handleSearchClick} style={styles.button}>
-            Search
-          </button>
-        </div>
+              {loading ? (
+                <p>Loading...</p>
+              ) : (
+                <div>
+                  <h3>Total Recipes: {totalResults}</h3>
+                  <List recipes={recipes} />
 
-        {loading ? (
-          <p>Loading...</p> // Display loading indicator while fetching
-        ) : (
-          <div>
-            <h3>Total Recipes: {totalResults}</h3>
-            <List recipes={recipes} />
+                  <div>
+                    <h3>Calories Summary Statistics</h3>
+                    <p>Mean: {stats.mean}</p>
+                    <p>Median: {stats.median}</p>
+                    <p>Min: {stats.min}</p>
+                    <p>Max: {stats.max}</p>
+                  </div>
+                </div>
+              )}
 
-            {/* Displaying summary statistics */}
-            <div>
-              <h3>Calories Summary Statistics</h3>
-              <p>Mean: {stats.mean}</p>
-              <p>Median: {stats.median}</p>
-              <p>Min: {stats.min}</p>
-              <p>Max: {stats.max}</p>
+              <CaloriesChart recipes={recipes} />
             </div>
-          </div>
-        )}
-      </div>
-    </div>
+          }
+        />
+
+        {/* Route for the recipe detail view */}
+        <Route path="/recipe/:id" element={<RecipeDetail />} />
+      </Routes>
+    </Router>
   );
 };
 

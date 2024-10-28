@@ -2,7 +2,7 @@ const NavBar = () => {
   return (
     <nav style={styles.nav}>
       <ul style={styles.navList}>
-        <li><a href="#home" style={styles.link}>Home</a></li>
+        <li><a href="/" style={styles.link}>Home</a></li>
         <li><a href="#search" style={styles.link}>Search</a></li>
         <li><a href="#about" style={styles.link}>About</a></li>
       </ul>
